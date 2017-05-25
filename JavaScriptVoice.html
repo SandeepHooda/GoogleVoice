@@ -5,6 +5,7 @@
 
 
   var webaudio_tooling_obj = function () {
+window.AudioContext = window.AudioContext ||      window.webkitAudioContext;
 
     var audioContext = new AudioContext();
 
@@ -25,9 +26,10 @@
 
     if (navigator.getUserMedia){
 
-        navigator.getUserMedia({audio:true}, 
+        navigator.getUserMedia({video: true,audio:true}, 
           function(stream) {
               start_microphone(stream);
+			 
           },
           function(e) {
             alert('Error capturing audio.');
@@ -124,6 +126,7 @@
 
     <p>Volume</p>
     <input id="volume" type="range" min="0" max="1" step="0.1" value="0.5"/>
+
 
 </body>
 </html>
